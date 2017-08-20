@@ -8,12 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import javax.transaction.Transactional;
-
 import java.util.Arrays;
 import java.util.List;
-
-import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -28,10 +24,9 @@ public class ProductCategoryRepositoryTest {
     }
 
     @Test
-    @Transactional //操作完成之后进行事务回滚
     public void saveTest(){
-        ProductCategory productCategory = new ProductCategory("女生最爱",4);
-        /*productCategory.setCategoryId(3);
+        ProductCategory productCategory = new ProductCategory("特色小吃",3);
+        /*productCategory.seategoryId(3);
         productCategory.setCategoryName("男生最爱");
         productCategory.setCategoryType(3);*/
         ProductCategory result = repository.save(productCategory);
