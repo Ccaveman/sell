@@ -76,6 +76,28 @@
 			<artifactId>gson</artifactId>
 			<version>2.8.0</version>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<!--微信支付、小程序、企业号和公众号（包括服务号和订阅号） Java SDK开发工具包-->
+		<dependency>
+			<groupId>com.github.binarywang</groupId>
+			<artifactId>weixin-java-mp</artifactId>
+			<version>2.7.0</version>
+		</dependency>
+		<!--支付模块SDK-->
+		<dependency>
+			<groupId>cn.springboot</groupId>
+			<artifactId>best-pay-sdk</artifactId>
+			<version>1.1.0</version>
+		</dependency>
+		<!--freemaker依赖-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-freemarker</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>

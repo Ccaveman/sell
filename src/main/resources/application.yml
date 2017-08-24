@@ -9,7 +9,7 @@ spring:
   jackson: # 进行全局配置将返回给前端的对象中所有为null的属性进行忽略
     default-property-inclusion: non_null
 server:
-  context-path: /sell
+#  context-path: /sell
   port: 8090
 
 #logging:
@@ -18,3 +18,11 @@ server:
 # # path: /var/log/tomcat/ #日志输出路径
 #  file:  /var/log/tomcat/sell.log #日志输出路径指定输出文件
 #  level: debug #日志输出级别
+
+wechat:
+  mpAppId: wxd898fcb01713c658
+  mpAppSecret: XXXXXXXXXXXX
+  mchId: 1483469312
+  mchKey: C5245D70627C1F8E9964D494B0735025
+  keyPath: /var/weixin_cert/h5.p12
+  notifyUrl: http://mysell.s1.natapp.cc/pay/notify
