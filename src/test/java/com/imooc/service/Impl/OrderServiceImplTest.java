@@ -89,4 +89,12 @@ public class OrderServiceImplTest {
 
     }
 
+    @Test
+    public void list(){
+        PageRequest pageRequest = new PageRequest(0,2);
+
+        Page<OrderDTO> list = orderService.findList(pageRequest);
+
+        Assert.assertTrue("查询所有订单列表",list.getTotalElements()>0);
+    }
 }

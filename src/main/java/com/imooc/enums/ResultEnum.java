@@ -10,6 +10,8 @@ import lombok.Getter;
 @Getter
 public enum ResultEnum {
 
+    SUCCESS(0,"成功"),
+
     PARAM_ERROR(1,"参数不正确"),
 
     PRODUCT_NOT_EXIST(10,"商品不存在"),
@@ -36,6 +38,11 @@ public enum ResultEnum {
 
     WXPAY_NOTIFY_MONEY_VERIFY_ERROR(21,"微信支付异步通知金额校验不通过"),
 
+    ORDER_CANCEL_SUCCESS(22,"订单取消成功"),
+
+    ORDER_FINISH_SUCCESS(23,"订单完结成功"),
+
+    PRODUCT_STATUS_ERROT(24,"商品状态不正确"),
     ;
 
     private Integer code;

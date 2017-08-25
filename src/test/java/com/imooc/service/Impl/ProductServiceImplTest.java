@@ -14,8 +14,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.math.BigDecimal;
 import java.util.List;
 
-import static org.junit.Assert.*;
-
 /**
  * @Author: Ccaveman
  * @Description:
@@ -58,7 +56,7 @@ public class ProductServiceImplTest {
         productInfo.setProductStock(100);
         productInfo.setProductDescription("很好吃的虾");
         productInfo.setProductIcon("http://XXX.jpg");
-        productInfo.setProductStatus(ProductStatusEnum.Down.getCode());
+        productInfo.setProductStatus(ProductStatusEnum.DOWN.getCode());
         productInfo.setCategoryType(2);
 
         ProductInfo info = productService.save(productInfo);
@@ -66,4 +64,15 @@ public class ProductServiceImplTest {
         Assert.assertNotNull(info);
     }
 
+    @Test
+    public void onSale(){
+        ProductInfo productInfo = productService.onSale("123456");
+        Assert.assertEquals(ProductStatusEnum.UP,productInfo.getProductStatusEnum());
+    }
+
+    @Test
+    public void offSale(){
+        ProductInfo productInfo = productService.offSale("123456");
+        Assert.assertEquals(ProductStatusEnum.DOWN,productInfo.getProductStatusEnum());
+    }
 }

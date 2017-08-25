@@ -9,7 +9,7 @@ spring:
   jackson: # 进行全局配置将返回给前端的对象中所有为null的属性进行忽略
     default-property-inclusion: non_null
 server:
-#  context-path: /sell
+  context-path: /sell
   port: 8090
 
 #logging:
