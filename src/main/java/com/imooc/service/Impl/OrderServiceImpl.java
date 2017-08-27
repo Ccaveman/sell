@@ -12,9 +12,7 @@ import com.imooc.enums.ResultEnum;
 import com.imooc.exception.SellException;
 import com.imooc.repository.OrderDetailRepository;
 import com.imooc.repository.OrderMasterRespository;
-import com.imooc.service.OrderService;
-import com.imooc.service.PayService;
-import com.imooc.service.ProductService;
+import com.imooc.service.*;
 import com.imooc.utils.KeyUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
@@ -51,6 +49,13 @@ public class OrderServiceImpl implements OrderService {
 
     @Autowired
     private PayService payService;
+
+    @Autowired
+    private PushMessage pushMessage;
+
+    @Autowired
+    private WebSocket webSocket;//引入websocket创建订单是发送消息
+
     @Override
     @Transactional
     public OrderDTO create(OrderDTO orderDTO) {
@@ -85,6 +90,9 @@ public class OrderServiceImpl implements OrderService {
                 .map(e->new CartDTO(e.getProductId(),e.getProductQuantity()))
                 .collect(Collectors.toList());
         productService.decreaseStock(cartDTOList);
+
+        //发送websocket消息
+        webSocket.sendMessage(orderDTO.getOrderId());
         return orderDTO;
     }
 
@@ -165,6 +173,8 @@ public class OrderServiceImpl implements OrderService {
             log.error("【完结订单】 更新失败，orderMaster={}",orderMaster);
             throw new SellException(ResultEnum.ORDER_UPDATE_FAIL);
         }
+        //推送微信模板消息
+        pushMessage.orderStatus(orderDTO);
         return orderDTO;
     }
 
