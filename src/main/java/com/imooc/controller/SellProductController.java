@@ -9,6 +9,7 @@ import com.imooc.service.ProductService;
 import com.imooc.utils.KeyUtil;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
@@ -132,6 +133,8 @@ public class SellProductController {
      * @return
      */
     @PostMapping("/save")
+    //@CachePut(cacheNames = "product",key = "123")此注解在执行完方法后再将结果放入缓存中
+    @CacheEvict(cacheNames = "product",key = "123")//执行此方法后会将缓存清除
     public ModelAndView save(@Valid ProductForm productForm ,
                              BindingResult bindingResult,
                              Map<String,Object>map){

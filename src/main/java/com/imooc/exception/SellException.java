@@ -1,12 +1,14 @@
 package com.imooc.exception;
 
 import com.imooc.enums.ResultEnum;
+import lombok.Getter;
 
 /**
  * @Author: Ccaveman
  * @Description: 自定义异常统一管理
  * @Date: Created in 13:48 2017/8/19
  */
+@Getter
 public class SellException extends RuntimeException {
 
     private Integer code;

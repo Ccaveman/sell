@@ -1,0 +1,44 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: root
+    url: jdbc:mysql://localhost/sell?characterEncoding=utf-8&useSSL=false
+  jackson: # 进行全局配置将返回给前端的对象中所有为null的属性进行忽略
+    default-property-inclusion: non_null
+  redis:
+    host: 192.168.1.107
+    port: 6379
+server:
+  context-path: /sell
+  port: 8090
+
+#logging:
+#  pattern:
+#    console: "%d - %msg%n"
+# # path: /var/log/tomcat/ #日志输出路径
+#  file:  /var/log/tomcat/sell.log #日志输出路径指定输出文件
+#  level: debug #日志输出级别
+
+wechat:
+  mpAppId: wxd898fcb01713c658
+  mpAppSecret: XXXXXXXXXXXX
+  openAppId: #开放平台的appid
+  openAppSecret:
+  mchId: 1483469312
+  mchKey: C5245D70627C1F8E9964D494B0735025
+  keyPath: /var/weixin_cert/h5.p12
+  notifyUrl: http://mysell.s1.natapp.cc/pay/notify
+  templateId:
+    ordderStatus: #模板id
+
+projectUrl:
+  wechatMpAuthorize: http://mysell.s1.natapp.cc
+  wechatOpenAuthorize: http://mysell.s1.natapp.cc
+  sell: http://mysell.s1.natapp.cc
+logging:
+  level:
+    com.imooc.dataobject.mapper: trace
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+
